@@ -48,7 +48,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev wget" \
     && fluent-gem install fluent-plugin-record-modifier \
     && fluent-gem install fluent-plugin-record-reformer \
     && fluent-gem install fluent-plugin-redis \
-    && fluent-gem install fluent-plugin-remote_syslog \
+    && fluent-gem install fluent-plugin-remote_syslog_criteo \
     && fluent-gem install fluent-plugin-rewrite-tag-filter \
     && fluent-gem install fluent-plugin-route \
     && fluent-gem install fluent-plugin-s3 \
