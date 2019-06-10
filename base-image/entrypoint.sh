@@ -19,6 +19,6 @@ fi
 # https://github.com/fluent/fluentd-kubernetes-daemonset/issues/245
 # This is generally a bad idea but as it is containers, it shouldn't resend all the logs anytime
 # due to pod deletion on upgrade
-rm -f /var/log/*.pos
+rm -f /var/log/*.pos /var/log/*.json
 
 exec fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins ${FLUENTD_OPT}
