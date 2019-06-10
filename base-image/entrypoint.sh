@@ -11,8 +11,14 @@
 set -e
 
 if [ ! -e /fluentd/etc/${FLUENTD_CONF} ]; then
-  echo "Using failsafe configuration for now"
-  cp /fluentd/failsafe.conf /fluentd/etc/${FLUENTD_CONF}
+   echo "Using failsafe configuration for now"
+   cp /fluentd/failsafe.conf /fluentd/etc/${FLUENTD_CONF}
 fi
+
+# Fix position old files remain
+# https://github.com/fluent/fluentd-kubernetes-daemonset/issues/245
+# This is generally a bad idea but as it is containers, it shouldn't resend all the logs anytime
+# due to pod deletion on upgrade
+rm -f /var/log/*.pos
 
 exec fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins ${FLUENTD_OPT}
